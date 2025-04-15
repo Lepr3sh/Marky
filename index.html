@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <title>Reflexión con Evidencia | Mario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #2c3e50;
+      --accent-color: #e74c3c;
+    }
+    body {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      font-family: 'Roboto', sans-serif;
+    }
+    .header-title {
+      border-bottom: 3px solid var(--main-color);
+      padding-bottom: 1rem;
+    }
+    .custom-card {
+      border: none;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    .blur-image {
+      filter: blur(8px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .blur-image:hover {
+      filter: blur(5px);
+    }
+    .blur-image::after {
+      content: "Click para ver";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="py-4">
+
+<div class="container-lg">
+  <header class="text-center mb-5">
+    <h1 class="header-title display-5 fw-bold text-dark mb-4">
+      <i class="bi bi-heart-pulse-fill me-2 text-danger"></i>Reflexión sobre el incidente con el cliente
+    </h1>
+    <div class="d-flex justify-content-center gap-3">
+      <span class="badge bg-dark fs-6">Para revisión interna</span>
+    </div>
+  </header>
+
+  <main class="row g-4">
+    <div class="col-lg-8 mx-auto">
+      <div class="custom-card p-4 mb-4">
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <i class="bi bi-person-badge-fill fs-1 text-primary"></i>
+          <div>
+            <h2 class="h5 mb-1">Marky, necesito contarle esto personalmente</h2>
+            <small class="text-muted">14 de Abril 2025 - Mario Moreno</small>
+          </div>
+        </div>
+        <p class="lead">Señor, quiero hablarle de corazón sobre lo que pasó con los clientes de Tony.</p>
+        <div class="alert alert-warning mt-4">
+          <i class="bi bi-emoji-frown-fill me-2"></i>
+          <strong>Reconozco que la cagué.</strong> En mi afán por darles una experiencia única, quizás me pasé de entusiasta.
+        </div>
+      </div>
+
+      <!-- Carrusel de Imágenes -->
+      <div class="custom-card p-4 mb-4">
+        <h3 class="h5 mb-4">
+          <i class="bi bi-images text-success me-2"></i>Evidencia en WhatsApp
+        </h3>
+        <p class="text-muted mb-3">Desliza o haz clic para ampliar.</p>
+        <div id="carouselEvidence" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner rounded">
+            <div class="carousel-item active">
+              <img src="https://i.ibb.co/k2hNrkXs/Screenshot-20250413-150340-Whats-App.jpg" class="d-block w-100 blur-image" data-bs-toggle="modal" data-bs-target="#modal1">
+            </div>
+            <div class="carousel-item">
+              <img src="https://i.ibb.co/prGVtmjT/Screenshot-20250413-150335-Whats-App.jpg" class="d-block w-100 blur-image" data-bs-toggle="modal" data-bs-target="#modal2">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselEvidence" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselEvidence" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modales para imágenes -->
+      <div class="modal fade" id="modal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content bg-dark">
+            <div class="modal-body p-0">
+              <img src="https://i.ibb.co/k2hNrkXs/Screenshot-20250413-150340-Whats-App.jpg" class="img-fluid w-100">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content bg-dark">
+            <div class="modal-body p-0">
+              <img src="https://i.ibb.co/prGVtmjT/Screenshot-20250413-150335-Whats-App.jpg" class="img-fluid w-100">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reflexión -->
+      <div class="custom-card p-4">
+        <h3 class="h5 mb-4">
+          <i class="bi bi-journal-text text-primary me-2"></i>Lecciones y Cierre
+        </h3>
+        <div class="alert alert-info">
+          <ul class="mb-0">
+            <li>Fui a disculparme personalmente</li>
+            <li>Me comuniqué con Joe</li>
+            <li>El cliente pidió disculpas también</li>
+          </ul>
+        </div>
+        <p>Estoy aprendiendo. No fue con mala intención. Sé que puedo mejorar y estoy aquí para dar la cara.</p>
+        <div class="bg-light p-3 rounded mt-4 fst-italic">
+          Abel fue testigo de que el cliente pidió disculpas y me dio la mano al final.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mt-5 text-center">
+    <div class="custom-card p-3">
+      <p class="mb-1">Con respeto,</p>
+      <h3 class="h4 text-primary">Mario Moreno</h3>
+    </div>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
