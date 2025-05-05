@@ -199,27 +199,60 @@
     }
 
     function exportarYReiniciar() {
-      if (tiros.length === 0) return;
+    if (tiros.length === 0) return;
 
-      // Crear hoja de cálculo
-      const wsData = [
-        ["Mesero", "Propina", "Comentario", "Fecha"],
-        ...tiros.map(t => [t.mesero, t.propina, t.comentario, new Date().toLocaleString()])
-      ];
-      
-      const ws = XLSX.utils.aoa_to_sheet(wsData);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, "Tiros");
-      
-      // Exportar archivo
-      XLSX.writeFile(wb, `tiros_${new Date().toISOString().slice(0,10)}.xlsx`);
+    // Crear hoja de cálculo
+    const wsData = [
+        ["Mesero", "Casa (60%)", "Mesero (40%)", "Comentario", "Fecha"], // Encabezados modificados
+        ...tiros.map(t => [
+            t.mesero,
+            t.propina * 0.6,  // Columna para la parte de la casa
+            t.propina * 0.4,  // Columna para la parte del mesero
+            t.comentario,
+            new Date().toLocaleString()
+        ])
+    ];
 
-      // Reiniciar datos
-      tiros = [];
-      localStorage.removeItem("tiros");
-      renderMeseros();
-      renderStats();
-    }
+    // Agregar totales
+    wsData.push([]); // Línea en blanco
+    
+    // Totales por mesero
+    meseros.forEach(nombre => {
+        const tirosMesero = tiros.filter(t => t.mesero === nombre);
+        if (tirosMesero.length > 0) {
+            wsData.push([
+                `TOTAL ${nombre}:`,
+                tirosMesero.reduce((a, t) => a + (t.propina * 0.6), 0),
+                tirosMesero.reduce((a, t) => a + (t.propina * 0.4), 0),
+                `Tiros: ${tirosMesero.length}`,
+                ""
+            ]);
+        }
+    });
+
+    // Total general
+    wsData.push([]); // Línea en blanco
+    wsData.push([
+        "TOTAL GENERAL:",
+        tiros.reduce((a, t) => a + (t.propina * 0.6), 0),
+        tiros.reduce((a, t) => a + (t.propina * 0.4), 0),
+        `Total Tiros: ${tiros.length}`,
+        ""
+    ]);
+
+    const ws = XLSX.utils.aoa_to_sheet(wsData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Tiros");
+    
+    // Exportar archivo
+    XLSX.writeFile(wb, `tiros_${new Date().toISOString().slice(0,10)}.xlsx`);
+
+    // Reiniciar datos
+    tiros = [];
+    localStorage.removeItem("tiros");
+    renderMeseros();
+    renderStats();
+}
 
     cargarMeseros();
   </script>
