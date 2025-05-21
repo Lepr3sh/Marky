@@ -703,8 +703,8 @@
     </section>
     <div class="cart-sidebar">
         <button class="btn btn-outline-warning w-100 mb-3 btn-back-cart" style="font-weight:bold;font-size:1.1rem;">
-    <i class="fas fa-arrow-left me-2"></i> Regresar
-</button>
+            <i class="fas fa-arrow-left me-2"></i> Regresar
+        </button>
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h4><i class="fas fa-shopping-cart me-2"></i> Mi Pedido</h4>
             <button class="btn btn-sm btn-outline-light close-cart"><i class="fas fa-times"></i></button>
@@ -773,7 +773,8 @@
             const totalAmount = document.querySelector('.total-amount');
             const btnCart = document.querySelector('.btn-cart');
             const cartSidebar = document.querySelector('.cart-sidebar');
-            
+            const closeCartBtn = document.querySelector('.close-cart');
+            const btnBackCart = document.querySelector('.btn-back-cart');
             const btnSendWhatsapp = document.querySelector('.btn-send-whatsapp');
             function updateCart() {
                 localStorage.setItem('cart', JSON.stringify(cart));
@@ -807,10 +808,6 @@
             }
             document.querySelectorAll('.btn-select').forEach(btn => {
                 btn.addEventListener('click', function () {
-                    const closeCartBtn = document.querySelector('.close-cart');
-                    closeCartBtn.addEventListener('click', () => {
-        cartSidebar.classList.remove('open');
-                   });
                     const service = this.getAttribute('data-service');
                     const price = parseInt(this.getAttribute('data-price'));
                     const existing = cart.find(item => item.service === service);
@@ -834,6 +831,9 @@
             closeCartBtn.addEventListener('click', () => {
                 cartSidebar.classList.remove('open');
             });
+            btnBackCart.addEventListener('click', function() {
+                cartSidebar.classList.remove('open');
+            });
             document.addEventListener('click', function (e) {
                 if (e.target.closest('.remove-item')) {
                     const index = e.target.closest('.remove-item').getAttribute('data-index');
@@ -852,6 +852,10 @@
                 });
                 message += `%0ATotal: $${cart.reduce((t, i) => t + i.price * i.quantity, 0).toLocaleString()}%0A¿Están disponibles?`;
                 window.open(`https://wa.me/523223782693?text=${message}`, '_blank');
+                cart = [];
+                updateCart();
+                localStorage.removeItem('cart');
+                cartSidebar.classList.remove('open');
             });
             updateCart();
             GLightbox({ selector: '.glightbox' });
