@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería Premium</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
     <style>
         :root {
             --primary-color: #6a11cb;
@@ -18,7 +16,6 @@
             --dark-color: #1a1a2e;
             --light-color: #f8f9fa;
         }
-        
         body {
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, var(--dark-color), #16213e);
@@ -26,7 +23,6 @@
             overflow-x: hidden;
             padding-bottom: 100px;
         }
-        
         #particles-js {
             position: fixed;
             width: 100%;
@@ -34,28 +30,23 @@
             z-index: -1;
             background: linear-gradient(135deg, var(--dark-color), #16213e);
         }
-        
         .navbar {
             background: rgba(26, 26, 46, 0.8);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        
         .logo-img {
             height: 50px;
             transition: all 0.3s ease;
         }
-        
         .logo-img:hover {
             transform: scale(1.1);
         }
-        
         .carousel-container {
             margin-top: 80px;
             margin-bottom: 50px;
             perspective: 1000px;
         }
-        
         .carousel {
             border-radius: 15px;
             overflow: hidden;
@@ -63,17 +54,14 @@
             transform-style: preserve-3d;
             transition: all 0.5s ease;
         }
-        
         .carousel:hover {
             box-shadow: 0 25px 60px rgba(106, 17, 203, 0.4);
         }
-        
         .carousel-item img {
             height: 600px;
             object-fit: cover;
             object-position: center;
         }
-        
         .carousel-caption {
             background: rgba(26, 26, 46, 0.7);
             backdrop-filter: blur(5px);
@@ -85,7 +73,6 @@
             width: 80%;
             animation: fadeInUp 1s ease;
         }
-        
         .carousel-control-prev, .carousel-control-next {
             width: 5%;
             color: white;
@@ -93,12 +80,10 @@
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             transition: all 0.3s ease;
         }
-        
         .carousel-control-prev:hover, .carousel-control-next:hover {
             color: var(--accent-color);
             transform: scale(1.2);
         }
-        
         .carousel-indicators button {
             width: 12px;
             height: 12px;
@@ -107,12 +92,10 @@
             background-color: white;
             transition: all 0.3s ease;
         }
-        
         .carousel-indicators button.active {
             background-color: var(--accent-color);
             transform: scale(1.3);
         }
-        
         .service-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -122,13 +105,11 @@
             margin-bottom: 20px;
             overflow: hidden;
         }
-        
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(106, 17, 203, 0.3);
             border-color: var(--accent-color);
         }
-        
         .card-header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
@@ -137,7 +118,6 @@
             position: relative;
             padding: 15px 20px;
         }
-        
         .card-header:after {
             content: '\f078';
             font-family: 'Font Awesome 6 Free';
@@ -147,15 +127,12 @@
             top: 15px;
             transition: all 0.3s ease;
         }
-        
         .card-header.collapsed:after {
             transform: rotate(-90deg);
         }
-        
         .card-body {
             background: rgba(255, 255, 255, 0.05);
         }
-        
         .list-group-item {
             background: transparent;
             color: white;
@@ -165,12 +142,10 @@
             align-items: center;
             transition: all 0.3s ease;
         }
-        
         .list-group-item:hover {
             background: rgba(255, 138, 0, 0.1);
             transform: translateX(5px);
         }
-        
         .price-tag {
             background: var(--accent-color);
             color: var(--dark-color);
@@ -179,7 +154,6 @@
             font-weight: bold;
             font-size: 0.9rem;
         }
-        
         .btn-select {
             background: var(--accent-color);
             color: var(--dark-color);
@@ -189,18 +163,15 @@
             font-weight: bold;
             transition: all 0.3s ease;
         }
-        
         .btn-select:hover {
             background: white;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 138, 0, 0.4);
         }
-        
         .btn-selected {
             background: #4BB543;
             color: white;
         }
-        
         .cart-sidebar {
             position: fixed;
             right: -400px;
@@ -214,12 +185,10 @@
             transition: all 0.5s ease;
             overflow-y: auto;
         }
-        
         .cart-sidebar.open {
             right: 0;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
         }
-        
         .cart-item {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
@@ -229,7 +198,6 @@
             justify-content: space-between;
             align-items: center;
         }
-        
         .cart-total {
             font-size: 1.2rem;
             font-weight: bold;
@@ -237,7 +205,6 @@
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
         .btn-whatsapp {
             position: fixed;
             bottom: 30px;
@@ -255,12 +222,10 @@
             z-index: 999;
             transition: all 0.3s ease;
         }
-        
         .btn-whatsapp:hover {
             transform: scale(1.1) rotate(10deg);
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
         }
-        
         .btn-cart {
             position: fixed;
             bottom: 30px;
@@ -278,12 +243,10 @@
             z-index: 999;
             transition: all 0.3s ease;
         }
-        
         .btn-cart:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 25px rgba(255, 138, 0, 0.6);
         }
-        
         .cart-badge {
             position: absolute;
             top: -5px;
@@ -299,139 +262,135 @@
             font-size: 0.8rem;
             font-weight: bold;
         }
-        
         footer {
             background: rgba(0, 0, 0, 0.7);
             padding: 30px 0;
             margin-top: 50px;
             position: relative;
         }
-        
         footer img {
             max-height: 100px;
             margin-bottom: 20px;
             transition: all 0.3s ease;
         }
-        
         footer img:hover {
             transform: rotate(5deg) scale(1.05);
         }
-        
         .social-icons a {
             color: white;
             font-size: 1.5rem;
             margin: 0 10px;
             transition: all 0.3s ease;
         }
-        
         .social-icons a:hover {
             color: var(--accent-color);
             transform: translateY(-5px);
         }
-        
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-        
         .floating {
             animation: float 3s ease-in-out infinite;
         }
-        
         .pulse {
             animation: pulse 2s infinite;
         }
-        
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(255, 138, 0, 0.4); }
             70% { box-shadow: 0 0 0 10px rgba(255, 138, 0, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 138, 0, 0); }
         }
-
-        /* Responsive styles */
         @media (max-width: 768px) {
-            .carousel-item img {
-                height: 400px;
-            }
-            
-            .cart-sidebar {
-                width: 100%;
-                right: -100%;
-            }
-            
-            .cart-sidebar.open {
-                right: 0;
-            }
-            
-            .btn-cart {
-                right: 90px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-            
-            .btn-whatsapp {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-            
-            .carousel-caption {
-                width: 90%;
-                padding: 10px;
-                bottom: 20px;
-            }
-            
-            .carousel-caption h5 {
-                font-size: 1.1rem;
-            }
-            
-            .carousel-caption p {
-                font-size: 0.8rem;
-                margin-bottom: 0;
-            }
+            .carousel-item img { height: 400px; }
+            .cart-sidebar { width: 100%; right: -100%; }
+            .cart-sidebar.open { right: 0; }
+            .btn-cart { right: 90px; width: 50px; height: 50px; font-size: 1.3rem; }
+            .btn-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; }
+            .carousel-caption { width: 90%; padding: 10px; bottom: 20px; }
+            .carousel-caption h5 { font-size: 1.1rem; }
+            .carousel-caption p { font-size: 0.8rem; margin-bottom: 0; }
         }
-
         @media (max-width: 576px) {
-            .carousel-item img {
-                height: 300px;
-            }
-            
-            .btn-cart {
-                right: 80px;
-                bottom: 20px;
-            }
-            
-            .btn-whatsapp {
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .service-card {
-                margin-bottom: 15px;
-            }
-            
-            .list-group-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .list-group-item div {
-                margin-top: 8px;
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
+            .carousel-item img { height: 300px; }
+            .btn-cart { right: 80px; bottom: 20px; }
+            .btn-whatsapp { bottom: 20px; right: 20px; }
+            .service-card { margin-bottom: 15px; }
+            .list-group-item { flex-direction: column; align-items: flex-start; }
+            .list-group-item div { margin-top: 8px; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        }
+        .model-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: 100%;
+        }
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(106, 17, 203, 0.3);
+            border-color: var(--accent-color);
+        }
+        .model-img-container {
+            position: relative;
+            overflow: hidden;
+            height: 340px;
+            background: #222;
+        }
+        .model-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            cursor: zoom-in;
+        }
+        .model-card:hover .model-img {
+            transform: scale(1.05);
+        }
+        .model-age {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-color);
+            color: var(--dark-color);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .model-info {
+            padding: 20px;
+        }
+        .model-info h3 {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .model-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+        .model-price {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        @media (max-width: 768px) {
+            .model-img-container { height: 250px; }
+        }
+        @media (max-width: 576px) {
+            .model-img-container { height: 200px; }
+            .model-info { padding: 15px; }
         }
     </style>
 </head>
 <body>
-    <!-- Partículas JS -->
     <div id="particles-js"></div>
-    
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -458,8 +417,6 @@
             </div>
         </div>
     </nav>
-    
-    <!-- Servicios con botones de selección -->
     <section id="services" class="container mt-5 pt-5">
         <div class="row justify-content-center">
             <div class="col-md-8 text-center mb-5 animate__animated animate__fadeIn">
@@ -468,7 +425,6 @@
                 <div class="divider mx-auto" style="width: 100px; height: 4px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 2px;"></div>
             </div>
         </div>
-        
         <div class="row">
             <div class="col-lg-6">
                 <div class="service-card animate__animated animate__fadeInLeft">
@@ -532,7 +488,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="col-lg-6">
                 <div class="service-card animate__animated animate__fadeInRight">
                     <div class="card-header" data-bs-toggle="collapse" data-bs-target="#service2" aria-expanded="true">
@@ -615,102 +570,146 @@
             </div>
         </div>
     </section>
-    
-    <!-- Galería -->
-    <section id="gallery" class="container carousel-container animate__animated animate__fadeIn">
-        <h2 class="text-center display-4 fw-bold mb-5">Galería <span class="text-gradient">Exclusiva</span></h2>
-        
-        <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="2"></button>
-                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="3"></button>
-                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="4"></button>
-                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="5"></button>
-                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="6"></button>
-                <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="7"></button>
+    <section id="gallery" class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center mb-5 animate__animated animate__fadeIn">
+                <h2 class="display-4 fw-bold mb-3">Nuestras <span class="text-gradient">Bellezas</span></h2>
+                <p class="lead">Descubre nuestras exclusivas acompañantes</p>
+                <div class="divider mx-auto" style="width: 100px; height: 4px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); border-radius: 2px;"></div>
             </div>
-            
-            <div class="carousel-inner rounded-3">
-                <div class="carousel-item active">
-                    <img src="https://i.postimg.cc/WqmtC7Pv/file-00000000020861f8af33eec7e29c2f4b.png" class="d-block w-100" alt="Imagen 1">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-3">Experiencias Premium</h5>
-                        <p>Servicios de la más alta calidad para clientes exigentes</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+                <div class="model-card">
+                    <div class="model-img-container">
+                        <a href="https://i.ibb.co/W4vJchsc/IMG-20250410-WA0142.jpg" class="glightbox" data-gallery="models" data-title="Valentina" data-description="Seductora y sofisticada, experta en crear momentos inolvidables.">
+                            <img src="https://i.ibb.co/W4vJchsc/IMG-20250410-WA0142.jpg" alt="Valentina" class="img-fluid model-img">
+                        </a>
+                        <div class="model-age">24 años</div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://i.postimg.cc/VdcCgJcw/file-00000000b68c61f7b51039441077720e.png" class="d-block w-100" alt="Imagen 2">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-3">Elegancia y Estilo</h5>
-                        <p>Ambientes exclusivos diseñados para tu comodidad</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://i.postimg.cc/2LNV0KMG/IMG-20250411-WA0181.jpg" class="d-block w-100" alt="Imagen 3">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-3">Atmósfera Única</h5>
-                        <p>Cada detalle cuidadosamente seleccionado</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://i.postimg.cc/Q9TFk34V/IMG-20250411-WA0183.jpg" class="d-block w-100" alt="Imagen 4">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-3">Servicio Personalizado</h5>
-                        <p>Atendemos tus necesidades específicas</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://i.postimg.cc/vD514GxN/IMG-20250411-WA0184.jpg" class="d-block w-100" alt="Imagen 5">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-3">Productos Exclusivos</h5>
-                        <p>Selección de artículos premium</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://i.postimg.cc/bsH2Bqzt/IMG-20250411-WA0185.jpg" class="d-block w-100" alt="Imagen 6">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-3">Ambiente Sofisticado</h5>
-                        <p>Diseños modernos y elegantes</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://i.postimg.cc/f3ktyXYc/IMG-20250411-WA0186.jpg" class="d-block w-100" alt="Imagen 7">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-3">Eventos Especiales</h5>
-                        <p>Organización de ocasiones memorables</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://i.postimg.cc/XrjyMtJD/IMG-20250412-WA0000.jpg" class="d-block w-100" alt="Imagen 8">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-3">Transporte de Lujo</h5>
-                        <p>Movilidad exclusiva y discreta</p>
+                    <div class="model-info">
+                        <h3>Valentina</h3>
+                        <p class="model-desc">Seductora y sofisticada, experta en crear momentos inolvidables</p>
+                        <div class="model-price">$3,500/hora</div>
                     </div>
                 </div>
             </div>
-            
-            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </button>
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="model-card">
+                    <div class="model-img-container">
+                        <a href="https://i.ibb.co/HDsyxBBN/IMG-20250410-WA0150.jpg" class="glightbox" data-gallery="models" data-title="Camila" data-description="Bailarina profesional con movimientos que hipnotizan.">
+                            <img src="https://i.ibb.co/HDsyxBBN/IMG-20250410-WA0150.jpg" alt="Camila" class="img-fluid model-img">
+                        </a>
+                        <div class="model-age">27 años</div>
+                    </div>
+                    <div class="model-info">
+                        <h3>Camila</h3>
+                        <p class="model-desc">Bailarina profesional con movimientos que hipnotizan</p>
+                        <div class="model-price">$4,200/hora</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="model-card">
+                    <div class="model-img-container">
+                        <a href="https://i.ibb.co/LDJtqfwM/Picsart-25-04-25-19-25-20-085.png" class="glightbox" data-gallery="models" data-title="Sofía" data-description="Inocencia combinada con una pasión ardiente.">
+                            <img src="https://i.ibb.co/LDJtqfwM/Picsart-25-04-25-19-25-20-085.png" alt="Sofía" class="img-fluid model-img">
+                        </a>
+                        <div class="model-age">22 años</div>
+                    </div>
+                    <div class="model-info">
+                        <h3>Sofía</h3>
+                        <p class="model-desc">Inocencia combinada con una pasión ardiente</p>
+                        <div class="model-price">$3,800/hora</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+                <div class="model-card">
+                    <div class="model-img-container">
+                        <a href="https://i.ibb.co/jkYjmwST/IMG-20250412-WA0000.jpg" class="glightbox" data-gallery="models" data-title="Isabella" data-description="Elegancia y clase con un toque de picardía.">
+                            <img src="https://i.ibb.co/jkYjmwST/IMG-20250412-WA0000.jpg" alt="Isabella" class="img-fluid model-img">
+                        </a>
+                        <div class="model-age">25 años</div>
+                    </div>
+                    <div class="model-info">
+                        <h3>Isabella</h3>
+                        <p class="model-desc">Elegancia y clase con un toque de picardía</p>
+                        <div class="model-price">$4,500/hora</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="model-card">
+                    <div class="model-img-container">
+                        <a href="https://i.ibb.co/mV8fsCzJ/IMG-20250411-WA0186.jpg" class="glightbox" data-gallery="models" data-title="Gabriela" data-description="Experta en masajes eróticos y juegos prohibidos.">
+                            <img src="https://i.ibb.co/mV8fsCzJ/IMG-20250411-WA0186.jpg" alt="Gabriela" class="img-fluid model-img">
+                        </a>
+                        <div class="model-age">28 años</div>
+                    </div>
+                    <div class="model-info">
+                        <h3>Gabriela</h3>
+                        <p class="model-desc">Experta en masajes eróticos y juegos prohibidos</p>
+                        <div class="model-price">$5,000/hora</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="model-card">
+                    <div class="model-img-container">
+                        <a href="https://i.ibb.co/SwhkcZcw/IMG-20250411-WA0185.jpg" class="glightbox" data-gallery="models" data-title="Daniela" data-description="Fantasías cumplidas con estilo y discreción.">
+                            <img src="https://i.ibb.co/SwhkcZcw/IMG-20250411-WA0185.jpg" alt="Daniela" class="img-fluid model-img">
+                        </a>
+                        <div class="model-age">23 años</div>
+                    </div>
+                    <div class="model-info">
+                        <h3>Daniela</h3>
+                        <p class="model-desc">Fantasías cumplidas con estilo y discreción</p>
+                        <div class="model-price">$4,800/hora</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+                <div class="model-card">
+                    <div class="model-img-container">
+                        <a href="https://i.ibb.co/C3mh0Hdg/IMG-20250411-WA0184.jpg" class="glightbox" data-gallery="models" data-title="Alejandra" data-description="Dominatrix con experiencia en juegos de poder.">
+                            <img src="https://i.ibb.co/C3mh0Hdg/IMG-20250411-WA0184.jpg" alt="Alejandra" class="img-fluid model-img">
+                        </a>
+                        <div class="model-age">26 años</div>
+                    </div>
+                    <div class="model-info">
+                        <h3>Alejandra</h3>
+                        <p class="model-desc">Dominatrix con experiencia en juegos de poder</p>
+                        <div class="model-price">$5,500/hora</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="model-card">
+                    <div class="model-img-container">
+                        <a href="https://i.ibb.co/Q3nMyH5v/IMG-20250411-WA0181.jpg" class="glightbox" data-gallery="models" data-title="Valeria" data-description="Compañera ideal para noches de pasión sin límites.">
+                            <img src="https://i.ibb.co/Q3nMyH5v/IMG-20250411-WA0181.jpg" alt="Valeria" class="img-fluid model-img">
+                        </a>
+                        <div class="model-age">24 años</div>
+                    </div>
+                    <div class="model-info">
+                        <h3>Valeria</h3>
+                        <p class="model-desc">Compañera ideal para noches de pasión sin límites</p>
+                        <div class="model-price">$4,000/hora</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    
-    <!-- Sidebar del carrito -->
     <div class="cart-sidebar">
+        <button class="btn btn-outline-warning w-100 mb-3 btn-back-cart" style="font-weight:bold;font-size:1.1rem;">
+    <i class="fas fa-arrow-left me-2"></i> Regresar
+</button>
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h4><i class="fas fa-shopping-cart me-2"></i> Mi Pedido</h4>
             <button class="btn btn-sm btn-outline-light close-cart"><i class="fas fa-times"></i></button>
         </div>
-        <div class="cart-items">
-            <!-- Los elementos del carrito se agregarán aquí dinámicamente -->
-        </div>
+        <div class="cart-items"></div>
         <div class="cart-total text-end">
             Total: $<span class="total-amount">0</span>
         </div>
@@ -718,133 +717,55 @@
             <i class="fab fa-whatsapp me-2"></i> Enviar por WhatsApp
         </button>
     </div>
-    
-    <!-- Botón flotante del carrito -->
     <button class="btn-cart">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-badge">0</span>
     </button>
-    
-    <!-- Botón flotante de WhatsApp -->
     <a href="#" class="btn-whatsapp" id="whatsapp-button">
         <i class="fab fa-whatsapp"></i>
     </a>
-    
-    <!-- Footer -->
     <footer id="contact" class="text-center text-white">
         <div class="container">
             <img src="https://i.postimg.cc/VdcCgJcw/file-00000000b68c61f7b51039441077720e.png" alt="Logo Footer" class="img-fluid floating mb-3" style="max-height: 80px;">
             <h3 class="mb-4">Contáctanos para una experiencia exclusiva</h3>
-            
             <div class="social-icons mb-4">
                 <a href="#" class="pulse"><i class="fab fa-whatsapp"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-telegram"></i></a>
                 <a href="#"><i class="fas fa-phone-alt"></i></a>
             </div>
-            
             <p class="mb-0">© 2023 Todos los derechos reservados</p>
         </div>
     </footer>
-    
-    <!-- Bootstrap JS y dependencias -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    
-    <!-- Particles JS -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <script>
-        // Configurar partículas
         particlesJS("particles-js", {
             "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#FFD700"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 2,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#FFD700",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": true,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#FFD700" },
+                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+                "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.1, "sync": false } },
+                "line_linked": { "enable": true, "distance": 150, "color": "#FFD700", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": true, "rotateX": 600, "rotateY": 1200 } }
             },
             "interactivity": {
                 "detect_on": "canvas",
                 "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
                     "resize": true
                 },
                 "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    }
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "push": { "particles_nb": 4 }
                 }
             },
             "retina_detect": true
         });
-        
-        // Sistema de carrito - Código corregido y mejorado
         document.addEventListener('DOMContentLoaded', function() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartItemsContainer = document.querySelector('.cart-items');
@@ -852,24 +773,15 @@
             const totalAmount = document.querySelector('.total-amount');
             const btnCart = document.querySelector('.btn-cart');
             const cartSidebar = document.querySelector('.cart-sidebar');
-            /*const closeCartBtn = document.querySelector('.close-cart');*/
-            const whatsappButton = document.getElementById('whatsapp-button');
-            const btnSendWhatsapp = document.querySelector('.btn-send-whatsapp');
             
-            // Función para actualizar el carrito
+            const btnSendWhatsapp = document.querySelector('.btn-send-whatsapp');
             function updateCart() {
-                // Guardar en localStorage
                 localStorage.setItem('cart', JSON.stringify(cart));
-                
-                // Actualizar badge
                 const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
                 cartBadge.textContent = totalItems;
                 cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
-                
-                // Actualizar items del carrito
                 cartItemsContainer.innerHTML = '';
                 let total = 0;
-                
                 if (cart.length === 0) {
                     cartItemsContainer.innerHTML = '<p class="text-center text-muted">No hay items en el carrito</p>';
                 } else {
@@ -891,12 +803,14 @@
                         total += item.price * item.quantity;
                     });
                 }
-
                 totalAmount.textContent = total.toLocaleString();
             }
-
             document.querySelectorAll('.btn-select').forEach(btn => {
                 btn.addEventListener('click', function () {
+                    const closeCartBtn = document.querySelector('.close-cart');
+                    closeCartBtn.addEventListener('click', () => {
+        cartSidebar.classList.remove('open');
+                   });
                     const service = this.getAttribute('data-service');
                     const price = parseInt(this.getAttribute('data-price'));
                     const existing = cart.find(item => item.service === service);
@@ -914,15 +828,12 @@
                     }, 1500);
                 });
             });
-
             btnCart.addEventListener('click', () => {
                 cartSidebar.classList.add('open');
             });
-
             closeCartBtn.addEventListener('click', () => {
                 cartSidebar.classList.remove('open');
             });
-       const closeCartBtn = document.querySelector('.close-cart');
             document.addEventListener('click', function (e) {
                 if (e.target.closest('.remove-item')) {
                     const index = e.target.closest('.remove-item').getAttribute('data-index');
@@ -930,7 +841,6 @@
                     updateCart();
                 }
             });
-
             btnSendWhatsapp.addEventListener('click', () => {
                 if (cart.length === 0) {
                     alert('Tu carrito está vacío.');
@@ -943,8 +853,8 @@
                 message += `%0ATotal: $${cart.reduce((t, i) => t + i.price * i.quantity, 0).toLocaleString()}%0A¿Están disponibles?`;
                 window.open(`https://wa.me/523223782693?text=${message}`, '_blank');
             });
-
             updateCart();
+            GLightbox({ selector: '.glightbox' });
         });
     </script>
 </body>
